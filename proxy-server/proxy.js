@@ -6,9 +6,24 @@ app.get('/proxy', (req, res) => {
   if (!url) {
     return res.status(400).send('Missing URL parameter');
   }
-  res.redirect(url);
+
+  // Check if the provided URL is valid
+  if (!isValidUrl(url)) {
+    return res.status(400).send('Invalid URL');
+  }
+
+  res.redirect(301, url);
 });
 
 app.listen(3000, () => {
   console.log('Proxy server is running on port 3000');
 });
+
+function isValidUrl(url) {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
