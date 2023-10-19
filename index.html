@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Web Proxy Search Engine</title>
+    <title>Valksec Proxy</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        input[type="text"] {
+            width: 400px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        input[type="submit"] {
+            font-size: 24px;
+            padding: 10px 20px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var query = urlParams.get('q');
+            if (query) {
+                document.getElementById("websiteInput").value = query;
+                searchWebsite();
+            }
+        }
+
+        function searchWebsite() {
+            var websiteUrl = document.getElementById("websiteInput").value;
+            window.location.href = websiteUrl;
+        }
+    </script>
 </head>
 <body>
-    <form action="https://valksec.github.io/search-api/engine.js" method="get">
-        <input type="text" name="q" placeholder="Search..." autocomplete="off">
-        <input type="submit" value="Search">
-    </form>
+    <h1>Valksec Proxy</h1>
+    <input type="text" id="websiteInput" placeholder="Enter a website URL..." autocomplete="off">
+    <br>
+    <button onclick="searchWebsite()">Go</button>
 </body>
 </html>
