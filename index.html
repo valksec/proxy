@@ -39,7 +39,8 @@
 
         function searchWebsite() {
             var websiteUrl = document.getElementById("websiteInput").value;
-            window.location.href = websiteUrl;
+            var proxyUrl = "https:/valksec.github.io/proxy/proxy-server/proxy.js?url=" + encodeURIComponent(websiteUrl);
+            window.location.href = proxyUrl;
         }
     </script>
 </head>
