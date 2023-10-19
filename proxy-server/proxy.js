@@ -4,6 +4,9 @@ const app = express();
 
 app.get('/proxy', async (req, res) => {
   const url = req.query.url;
+  if (!url) {
+    return res.status(400).send('Missing URL parameter');
+  }
   try {
     const response = await axios.get(url);
     res.send(response.data);
